@@ -12,11 +12,19 @@
   <body>
     <main class="wrap">
       <section class="card" aria-labelledby="title">
-        <h1 id="title" class="heading">Un pequeño detalle Yesi</h1>
+        <div class="toolbar" role="toolbar" aria-label="Opciones">
+          <label for="themeSelect" class="sr-only">Paleta</label>
+          <select id="themeSelect" aria-label="Seleccionar paleta" class="theme-select">
+            <option value="lavanda">Lavanda (predeterminado)</option>
+            <option value="noche">Noche</option>
+            <option value="marfil">Marfil</option>
+          </select>
+        </div>
+        <h1 id="title" class="heading">Un pequeño detalle</h1>
         <p class="subtitle">Para ti......😊</p>
 
         <div class="message" id="message" aria-live="polite">
-          <p class="greeting">De Nilton</p>
+          <p class="greeting">De: Nilton</p>
           <p class="typed" id="typed"></p>
         </div>
 
@@ -27,6 +35,14 @@
         </div>
 
         <div class="hearts" aria-hidden="true"></div>
+        <!-- sello reemplazado por SVG para animación -->
+        <div class="seal-wrap" aria-hidden="true">
+          <svg id="sealSvg" width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="10" fill="#EDE7F6" stroke="#C49CF0" stroke-width="0.8" />
+            <path d="M7 9.5c0-1.1.9-2 2-2h6c1.1 0 2 .9 2 2v5c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2v-5z" fill="#F8F3FF" stroke="#B86EF0" stroke-width="0.6" />
+            <path d="M8 10.5l4 3 4-3" stroke="#8A39D1" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
       </section>
       <footer class="credit">Hecho de nilton</footer>
     </main>
