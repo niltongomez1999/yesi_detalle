@@ -155,57 +155,20 @@ function showFullAlert(text, ttl = 5000){
         <p class="msg"></p>
         <div class="actions">
           <button class="ok">Cerrar</button>
-          <button class="goto">Ver página de gracias</button>
+          <button class="goto">Ver otro perfil</button>
         </div>
       </div>
     `;
     document.body.appendChild(fa);
-    // accessibility: manage focus and keyboard inside the dialog
     const btnClose = fa.querySelector('.ok');
     const btnGoto = fa.querySelector('.goto');
     btnClose.addEventListener('click', ()=> hideFullAlert(fa));
     btnGoto.addEventListener('click', ()=> {
-      // abrir en nueva pestaña para no romper la experiencia actual
-      window.open('gracias/index.html', '_blank');
-      // cerrar la alerta después de abrir
       hideFullAlert(fa);
+      setTimeout(()=> { window.location.href = 'gracias/segundo.html'; }, 320);
     });
-    // store previously focused element to restore later
-    fa._previouslyFocused = document.activeElement;
-    // hide the rest of the app from assistive tech
+    // accessibility: set aria-hidden on main while dialog open
     if (wrap) wrap.setAttribute('aria-hidden', 'true');
-    // focusable elements inside dialog
-    const focusableSelector = 'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
-    fa._focusable = Array.from(fa.querySelectorAll(focusableSelector)).filter(el => !el.hasAttribute('disabled'));
-    // keydown handler to trap focus and handle Escape
-    fa._keydownHandler = function(e){
-      if (e.key === 'Escape'){
-        e.stopPropagation();
-        hideFullAlert(fa);
-        return;
-      }
-      if (e.key === 'Tab'){
-        const foc = fa._focusable;
-        if (!foc.length) return;
-        const first = foc[0];
-        const last = foc[foc.length - 1];
-        if (e.shiftKey){
-          if (document.activeElement === first){
-            e.preventDefault();
-            last.focus();
-          }
-        } else {
-          if (document.activeElement === last){
-            e.preventDefault();
-            first.focus();
-          }
-        }
-      }
-    };
-    // attach keydown on capture so it runs before other handlers
-    fa.addEventListener('keydown', fa._keydownHandler, true);
-    // set initial focus to the close button
-    setTimeout(()=> btnClose.focus(), 50);
   }
   fa.querySelector('.msg').textContent = text;
   requestAnimationFrame(()=> fa.classList.add('show'));
