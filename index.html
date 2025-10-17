@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Un pequeño detalle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card" aria-labelledby="title">
+        <h1 id="title" class="heading">Un pequeño detalle Yesi</h1>
+        <p class="subtitle">Para ti......😊</p>
+
+        <div class="message" id="message" aria-live="polite">
+          <p class="greeting">De Nilton</p>
+          <p class="typed" id="typed"></p>
+        </div>
+
+        <div class="controls">
+          <label for="nameInput" class="sr-only">Nombre</label>
+          <input id="nameInput" class="name-input" type="text" placeholder="Escribe su nombre (opcional)" />
+          <button id="revealBtn" class="btn">Revelar</button>
+        </div>
+
+        <div class="hearts" aria-hidden="true"></div>
+      </section>
+      <footer class="credit">Hecho de nilton</footer>
+    </main>
+
+    <script src="js/script.js" defer></script>
+  </body>
+</html>
